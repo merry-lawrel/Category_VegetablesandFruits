@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h2><center>Enter Product Details</center></h2><br><br>
+</head>
+<body>
+    <center>
+    <form action="{% url 'gdata' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="prdname" placeholder="Enter Product Name"><br><br>
+        <input type="file" name="prdimage" placeholder="Enter Image"><br><br>
+        <input type="text" name="prdprice" placeholder="Enter Product Price"><br><br>
+        <select name="prdcat">
+        {% for i in data %}
+            <option value="{{i.cat_name}}">{{i.cat_name}}</option>
+        {% endfor %}
+        </select><br><br>
+        <input type="submit">
+    </form>
+    </center>
+</body>
+</html>
